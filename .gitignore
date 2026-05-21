@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.eggs/
+ 
+# Virtual environment
+venv/
+.venv/
+env/
+ 
+# Environment variables - NEVER commit these
+.env
+.env.*
+*.env
+ 
+# Terraform
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.backup
+*.tfvars
+crash.log
+override.tf
+ 
+# AWS credentials - NEVER commit these
+.aws/
+credentials
+ 
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+ 
+# OS
+.DS_Store
+Thumbs.db
+ 
+# Docker
+.dockerignore
+ 
+# Logs
+*.log
+logs/
+ 
+# Secrets scanning reports
+gitleaks-report.json
+trivy-report.json
+semgrep-report.json

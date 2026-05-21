@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 15s     # How frequently to poll targets for metrics (default is 1m)
+  evaluation_interval: 15s # How frequently to evaluate alerting rules
+
+# --- SCRAPE CONFIGURATIONS ---
+scrape_configs:
+
+  # Job 1: Prometheus monitoring its own runtime engine metrics
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Job 2: Scraping telemetry from your DevSecOps Flask Application
+  - job_name: 'flask-app'
+    metrics_path: '/health'  # The endpoint where your python monitoring library exposes data
+    static_configs:
+      - targets: ['webapp:5000']
