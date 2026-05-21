@@ -21,14 +21,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  # Job 2: Static Application Security Testing (Fixed Indentation)
   sast:
-      runs-on: ubuntu-latest
-      needs: secret-scan
-      steps:
-        - name: Checkout Repository Code
-          uses: actions/checkout@v4
+    runs-on: ubuntu-latest
+    needs: secret-scan
+    steps:
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
 
-        - name: Run Semgrep
-          uses: semgrep/semgrep-action@v1
-          with:
-            config: p/python
+      - name: Run Semgrep
+        uses: semgrep/semgrep-action@v1
+        with:
+          config: p/python
