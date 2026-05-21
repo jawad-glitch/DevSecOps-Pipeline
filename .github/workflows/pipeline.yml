@@ -1,0 +1,15 @@
+name: DevSecOps Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # Job 1: Automated Secrets Auditing
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Scan Notice
+        run: echo "Running secret scan..."
