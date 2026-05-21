@@ -8,7 +8,7 @@ volumes:
 
 services:
   webapp:
-    image: devsecops-app:latest
+    build: .
     container_name: devsecops-app
     restart: unless-stopped
     ports:
@@ -16,6 +16,7 @@ services:
     environment:
       - APP_VERSION=1.0.0
       - APP_ENV=production
+      - FLASK_RUN_HOST=0.0.0.0
     networks:
       - app-network
   
@@ -26,7 +27,7 @@ services:
     ports:
       - 9090:9090
     volumes:
-      - monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
 
     networks:
       - app-network

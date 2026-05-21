@@ -61,6 +61,7 @@ def items():
             "created_record": new_item
         }), 201
 
-if __name__ == '__main__':
-    # Runs on port 3000 to match your current Docker/Jenkins pipeline settings
-    app.run(host='0.0.0.0', port=5000)
+
+if __name__ == "__main__":
+    server_host = os.getenv("FLASK_RUN_HOST", "127.0.0.1")
+    app.run(host=server_host, port=5000)
