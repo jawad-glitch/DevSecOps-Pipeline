@@ -8,7 +8,7 @@ volumes:
 
 services:
   webapp:
-    build: .
+    image: ${ECR_REGISTRY}/devsecops-demo-app:${IMAGE_TAG}
     container_name: devsecops-app
     restart: unless-stopped
     ports:
