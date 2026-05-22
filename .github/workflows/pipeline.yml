@@ -133,6 +133,6 @@ jobs:
           script: |
             aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | \
               docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}
-            docker pull ${{ secrets.ECR_REGISTRY }}/devsecops-app:${{ github.sha }}
-            cd /home/ubuntu/devsecops-pipeline
+            docker pull ${{ secrets.ECR_REGISTRY }}/devsecops-demo-app:${{ github.sha }}
+            cd /home/ec2-user/devsecops-pipeline
             IMAGE_TAG=${{ github.sha }} docker compose up -d --no-deps webapp
