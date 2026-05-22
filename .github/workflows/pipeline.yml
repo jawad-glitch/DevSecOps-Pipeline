@@ -131,8 +131,10 @@ jobs:
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | \
-              docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}
-            docker pull ${{ secrets.ECR_REGISTRY }}/devsecops-demo-app:${{ github.sha }}
-            cd /home/ec2-user/devsecops-pipeline
-            IMAGE_TAG=${{ github.sha }} docker compose up -d --no-deps webapp
+  aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | \
+    docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}
+  docker pull ${{ secrets.ECR_REGISTRY }}/devsecops-demo-app:${{ github.sha }}
+  cd /home/ec2-user/devsecops-pipeline
+  export ECR_REGISTRY=${{ secrets.ECR_REGISTRY }}
+  export IMAGE_TAG=${{ github.sha }}
+  docker compose up -d --no-deps webapp
